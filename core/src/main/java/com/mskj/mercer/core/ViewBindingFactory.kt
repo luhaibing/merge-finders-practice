@@ -15,13 +15,21 @@ object ViewBindingFactory {
 
     @JvmStatic
     fun <VB : ViewBinding> get(
-        clazz: KClass<VB>, layoutInflater: LayoutInflater,
+        clazz: Class<VB>, layoutInflater: LayoutInflater,
         parent: ViewGroup?, attachToParent: Boolean
     ): VB {
         return ViewBindingFinder.get(
             // clazz::class.java.canonicalName,
-            clazz.java, layoutInflater, parent, attachToParent
+            clazz, layoutInflater, parent, attachToParent
         )
+    }
+
+    @JvmStatic
+    fun <VB : ViewBinding> get(
+        clazz: KClass<VB>, layoutInflater: LayoutInflater,
+        parent: ViewGroup?, attachToParent: Boolean
+    ): VB {
+        return get(clazz.java,layoutInflater, parent, attachToParent)
     }
 
     @JvmStatic

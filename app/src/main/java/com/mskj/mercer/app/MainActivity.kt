@@ -3,30 +3,39 @@ package com.mskj.mercer.app
 import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import com.mskj.mercer.app.databinding.ActivityMainBinding
 import com.mskj.mercer.core.OnRemindAction
-import com.mskj.mercer.core.ViewModelFactory
 
-class MainActivity : AppCompatActivity(), OnRemindAction<String, Unit> {
+class MainActivity :
+    // AppCompatActivity()
+    BaseActivity<ActivityMainBinding>(), OnRemindAction<String, Unit> {
+
+    private val vm: MainViewModel by viewModelFinders()
+
+    // private val binding: ActivityMainBinding by viewBindingFinders()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // setContentView(R.layout.activity_main)
-        val binding = ActivityMainBinding.inflate(layoutInflater)
+        // val vb = ActivityMainBinding.inflate(layoutInflater)
+        // val vb = ViewBindingFactory.get<ActivityMainBinding>(this)
         setContentView(binding.root)
         binding.bt.setOnClickListener {
-            val vm = ViewModelProvider(this, ViewModelFactory(this)).get(MainViewModel::class.java)
+            // 单次使用自定义的 ViewModelProvider.Factory 获取 viewModel 实例
+            // val vm = ViewModelProvider(this, ViewModelFactory(this)).get(MainViewModel::class.java)
+            // 走默认流程获取
             // val vm = ViewModelProvider(this).get(MainViewModel::class.java)
-            Toast.makeText(this, "vm21312333 : $vm", Toast.LENGTH_SHORT).show()
+            vm.queryMsg()
+        }
+        vm.msgLiveData().observe(this) {
+            Toast.makeText(this, "msg : $it", Toast.LENGTH_SHORT).show()
         }
 
     }
 
     /*
+    // 替换默认的 ViewModelProvider.Factory 实现
     override fun getDefaultViewModelProviderFactory(): ViewModelProvider.Factory {
         // return super.getDefaultViewModelProviderFactory()
         return ViewModelFactory(this)
