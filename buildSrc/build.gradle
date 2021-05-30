@@ -1,0 +1,27 @@
+buildscript {
+    ext.kotlin_version = "1.5.0"
+    ext.gradle_version = "4.2.1"
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:$gradle_version"
+        //noinspection DifferentKotlinGradleVersion
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+repositories {
+    google()
+    mavenCentral()
+}
+
+apply plugin: 'java'
+apply plugin: 'kotlin'
+
+dependencies {
+    //noinspection DifferentStdlibGradleVersion
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation "com.android.tools.build:gradle:$gradle_version"
+}

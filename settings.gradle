@@ -1,0 +1,5 @@
+rootProject.name = "merge-finders-practice"
+include ':app'
+include ':mylibrary'
+include ':core'
+include ':compiler'

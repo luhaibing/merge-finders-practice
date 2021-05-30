@@ -1,0 +1,20 @@
+plugins {
+    id 'java-library'
+    id 'kotlin'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_7
+    targetCompatibility = JavaVersion.VERSION_1_7
+}
+
+jar {
+    exclude "androidx/**"
+    exclude "com.mskj.mercer.core.ViewBindingFinder".replace(".", File.separator) + ".class"
+    exclude "com.mskj.mercer.core.ViewModelFinder".replace(".", File.separator) + ".class"
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compileOnly "com.google.android:android:4.1.1.4"
+}

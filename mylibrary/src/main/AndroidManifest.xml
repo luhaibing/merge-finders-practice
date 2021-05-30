@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mskj.mercer.mylibrary">
+
+    <application>
+        <activity android:name=".FourthActivity"></activity>
+    </application>
+
+</manifest>
