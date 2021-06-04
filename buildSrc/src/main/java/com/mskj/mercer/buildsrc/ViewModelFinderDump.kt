@@ -54,7 +54,7 @@ object ViewModelFinderDump : Opcodes {
         // 抛出异常
         mv.visitTypeInsn(Opcodes.NEW, "java/lang/NullPointerException")
         mv.visitInsn(Opcodes.DUP)
-        mv.visitLdcInsn("can not found ViewModel instance.111")
+        mv.visitLdcInsn("can not found ViewModel instance.")
         mv.visitMethodInsn(
             Opcodes.INVOKESPECIAL, "java/lang/NullPointerException", "<init>",
             "(Ljava/lang/String;)V", false
