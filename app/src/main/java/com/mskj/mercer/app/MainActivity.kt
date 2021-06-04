@@ -1,9 +1,9 @@
 package com.mskj.mercer.app
 
 import android.app.Dialog
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.mskj.mercer.app.base.BaseActivity
 import com.mskj.mercer.app.databinding.ActivityMainBinding
 import com.mskj.mercer.core.OnRemindAction
 
